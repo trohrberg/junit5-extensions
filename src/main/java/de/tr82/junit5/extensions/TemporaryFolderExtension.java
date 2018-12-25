@@ -17,13 +17,13 @@ public class TemporaryFolderExtension implements AfterEachCallback, TestInstance
     }
 
     @Override
-    public void afterEach(ExtensionContext context) throws Exception {
+    public void afterEach(ExtensionContext context) {
         tempFolders.forEach(TemporaryFolder::cleanUp);
         tempFolders.clear();
     }
 
     @Override
-    public void postProcessTestInstance(Object testInstance, ExtensionContext context) throws Exception {
+    public void postProcessTestInstance(Object testInstance, ExtensionContext context) {
         stream(testInstance.getClass().getDeclaredFields())
                 .filter(field -> field.getType() == TemporaryFolder.class)
                 .forEach(field -> injectTemporaryFolder(testInstance, field));
