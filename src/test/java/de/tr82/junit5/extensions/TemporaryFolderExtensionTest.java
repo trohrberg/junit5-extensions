@@ -44,7 +44,7 @@ public class TemporaryFolderExtensionTest {
         File subfolder = folder.createFolder("subfolder");
         assertTrue(subfolder.exists());
         assertTrue(subfolder.isDirectory());
-        assertEquals(folder.getPath().toString() + "/subfolder", subfolder.getPath().toString());
+        assertEquals(folder.getPath().toString() + File.separator + "subfolder", subfolder.getPath().toString());
     }
 
     @Test
@@ -55,6 +55,6 @@ public class TemporaryFolderExtensionTest {
 
         assertTrue(testfile.exists());
         assertTrue(testfile.isFile());
-        assertEquals(folder.getPath().toString() + "/subfolder/testfile.bin", testfile.getPath().toString());
+        assertEquals(folder.getPath().toString() + File.separator + "subfolder" + File.separator + "testfile.bin", testfile.getPath().toString());
     }
 }
